@@ -164,7 +164,11 @@ const SVGArea = ({ draggedData }) => {
         })}
       </svg> */}
 
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1909.07 1654.5">
+      <svg
+        ref={canvas}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1909.07 1654.5"
+      >
         <defs>
           <style>
             {
@@ -172,39 +176,7 @@ const SVGArea = ({ draggedData }) => {
             }
           </style>
         </defs>
-        {nodes.map((node) => {
-          return (
-            <g
-              key={node.id}
-              className="node"
-              id={node.id}
-              // style={{
-              //   transform:
-              //     "translate: translate(" + node.x + "," + node.y + ")",
-              // }}
-              x={node.x}
-              y={node.y}
-              data-name="shape"
-            >
-              <rect
-                x={node.x}
-                y={node.y}
-                width={72}
-                height={72}
-                fill={node.color}
-              ></rect>
-              <text
-                x={node.x + 36}
-                y={node.y + 36}
-                width={72}
-                dominantBaseline="middle"
-                textAnchor="middle"
-              >
-                {node.name}
-              </text>
-            </g>
-          );
-        })}
+
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
             <g id="Concrete_Areas" data-name="Concrete Areas">
@@ -5199,6 +5171,40 @@ const SVGArea = ({ draggedData }) => {
             </g>
           </g>
         </g>
+
+        {nodes.map((node) => {
+          return (
+            <g
+              key={node.id}
+              className="node"
+              id={node.id}
+              // style={{
+              //   transform:
+              //     "translate: translate(" + node.x + "," + node.y + ")",
+              // }}
+              x={node.x}
+              y={node.y}
+              data-name="shape"
+            >
+              <rect
+                x={node.x}
+                y={node.y}
+                width={72}
+                height={72}
+                fill={node.color}
+              ></rect>
+              <text
+                x={node.x + 36}
+                y={node.y + 36}
+                width={72}
+                dominantBaseline="middle"
+                textAnchor="middle"
+              >
+                {node.name}
+              </text>
+            </g>
+          );
+        })}
       </svg>
     </div>
   );

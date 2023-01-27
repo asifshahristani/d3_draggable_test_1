@@ -45,8 +45,8 @@ svg {
   width: 80vw;
   height: 70vh;
   margin: 5px;
-  background-color: #efefef;
-  border: 3px solid #afafaf;
+  /* background-color: #efefef;
+  border: 3px solid #afafaf; */
   border-radius: 5px;
 }
 
@@ -61,4 +61,5 @@ svg.drag-over {
   justify-content: center;
   align-items: center;
   border-radius: 5px !important;
+  margin-top: 5rem;
 }
