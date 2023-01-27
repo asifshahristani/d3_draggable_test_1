@@ -1,0 +1,64 @@
+.App {
+  font-family: sans-serif;
+}
+
+.dragging-blocks {
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.draggable {
+  margin: 5px;
+}
+
+.block {
+  padding: 10px;
+  border: 1px solid black;
+  color: black;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node rect {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.node text {
+  font-size: 20px;
+  color: black;
+}
+
+.node {
+ stroke: 5px solid dodgerblue;
+ cursor: pointer;
+ z-index: 100000000000 !important;
+}
+
+svg {
+  width: 80vw;
+  height: 70vh;
+  margin: 5px;
+  background-color: #efefef;
+  border: 3px solid #afafaf;
+  border-radius: 5px;
+}
+
+svg.drag-over {
+  border: 3px dashed red;
+}
+
+
+.svgContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px !important;
+}
