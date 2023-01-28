@@ -50,17 +50,26 @@ const SVGArea = ({ draggedData }) => {
   );
 
   useEffect(() => {
-    // SVGDrawer.draw(nodes);
     const svg = d3.select(canvas.current);
+
+    const g = svg.select("#Layer_2");
+    const handleZoom = (e) => g.attr("transform", e.transform);
+
+    const zoom = d3.zoom().scaleExtent([1, 8]).on("zoom", handleZoom);
+
+    svg.call(zoom);
 
     d3.select("svg")
       .selectAll(".node")
-      .on("mousedown", function () {
-        // setNodeToDrag(this.id);
+      .on("mousedown", function (e) {
+        e.stopPropagation();
         updateNodePosition(svg, this.id);
       })
-      .on("mouseup", () => fixMousePosition(svg));
-  }, [nodes, updateNodePosition]);
+      .on("mouseup", (e) => {
+        e.stopPropagation();
+        fixMousePosition(svg);
+      });
+  }, [updateNodePosition]);
 
   function fixMousePosition(svg) {
     svg.on("mousemove", null);
@@ -129,41 +138,6 @@ const SVGArea = ({ draggedData }) => {
       onDragLeave={(e) => onDragLeave(e)}
       onDragOver={(e) => onDragOver(e)}
     >
-      {/* <svg ref={canvas}>
-        {nodes.map((node) => {
-          return (
-            <g
-              key={node.id}
-              className="node"
-              id={node.id}
-              // style={{
-              //   transform:
-              //     "translate: translate(" + node.x + "," + node.y + ")",
-              // }}
-              x={node.x}
-              y={node.y}
-            >
-              <rect
-                x={node.x}
-                y={node.y}
-                width={72}
-                height={72}
-                fill={node.color}
-              ></rect>
-              <text
-                x={node.x + 36}
-                y={node.y + 36}
-                width={72}
-                dominantBaseline="middle"
-                textAnchor="middle"
-              >
-                {node.name}
-              </text>
-            </g>
-          );
-        })}
-      </svg> */}
-
       <svg
         ref={canvas}
         xmlns="http://www.w3.org/2000/svg"
@@ -5169,42 +5143,42 @@ const SVGArea = ({ draggedData }) => {
                 d="M1469 1476.62l-5.2-17.36 55.92-10.5s12.72-1.45 13-7.81"
               />
             </g>
+
+            {nodes.map((node) => {
+              return (
+                <g
+                  key={node.id}
+                  className="node"
+                  id={node.id}
+                  // style={{
+                  //   transform:
+                  //     "translate: translate(" + node.x + "," + node.y + ")",
+                  // }}
+                  x={node.x}
+                  y={node.y}
+                  data-name="shape"
+                >
+                  <rect
+                    x={node.x}
+                    y={node.y}
+                    width={72}
+                    height={72}
+                    fill={node.color}
+                  ></rect>
+                  <text
+                    x={node.x + 36}
+                    y={node.y + 36}
+                    width={72}
+                    dominantBaseline="middle"
+                    textAnchor="middle"
+                  >
+                    {node.name}
+                  </text>
+                </g>
+              );
+            })}
           </g>
         </g>
-
-        {nodes.map((node) => {
-          return (
-            <g
-              key={node.id}
-              className="node"
-              id={node.id}
-              // style={{
-              //   transform:
-              //     "translate: translate(" + node.x + "," + node.y + ")",
-              // }}
-              x={node.x}
-              y={node.y}
-              data-name="shape"
-            >
-              <rect
-                x={node.x}
-                y={node.y}
-                width={72}
-                height={72}
-                fill={node.color}
-              ></rect>
-              <text
-                x={node.x + 36}
-                y={node.y + 36}
-                width={72}
-                dominantBaseline="middle"
-                textAnchor="middle"
-              >
-                {node.name}
-              </text>
-            </g>
-          );
-        })}
       </svg>
     </div>
   );
