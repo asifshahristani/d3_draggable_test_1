@@ -69,6 +69,10 @@ const SVGArea = ({ draggedData }) => {
         e.stopPropagation();
         fixMousePosition(svg);
       });
+
+    svg.on("mouseup", (e) => {
+      fixMousePosition(svg);
+    });
   }, [updateNodePosition]);
 
   function fixMousePosition(svg) {
