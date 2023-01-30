@@ -63,7 +63,34 @@ svg.drag-over {
   justify-content: center;
   align-items: center;
   border-radius: 5px !important;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* style for rects test */
+
+.node rect {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.node text {
+  font-size: 20px;
+  color: black;
+}
+
+.node {
+ stroke: 5px solid dodgerblue;
+}
+
+.btn__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.save-btn {
+  padding: 0.365rem 0.5rem;
 }

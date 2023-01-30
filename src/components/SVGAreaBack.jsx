@@ -31,17 +31,21 @@ const SVGArea = ({ draggedData }) => {
   // eslint-disable-next-line no-unused-vars
   const updateNodePosition = useCallback(
     function (svg, id) {
-      svg.on("mousemove", (e) => {
+      svg.on("mousemove", function (e) {
+        // console.log(id);
         if (id) {
           const newNodes = [...nodes];
           const index = newNodes.findIndex((n) => +n.id === +id);
           if (index !== -1) {
             const point = d3.pointer(e);
-            const newNode = { ...newNodes[index] };
-            newNode.x = point[0];
-            newNode.y = point[1];
-            newNodes[index] = newNode;
-            setNodes(newNodes);
+            setNodes((preNodes) => {
+              const newNodes = [...preNodes];
+              const newNode = { ...newNodes[index] };
+              newNode.x = point[0] - 36;
+              newNode.y = point[1] - 36;
+              newNodes[index] = newNode;
+              return newNodes;
+            });
             // SVGDrawer.draw(newNodes);
           }
         }
