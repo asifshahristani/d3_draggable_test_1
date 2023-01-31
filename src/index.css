@@ -90,7 +90,14 @@ svg.drag-over {
 }
 
 .save-btn {
-  padding: 0.365rem 0.5rem;
+  padding: 0.35rem 0.85rem;
+  margin: 0 0.5rem;
+  background-color: #2DCDDF;
+  color: #FFF;
+  outline: 0;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 /* svg parts interactivity */

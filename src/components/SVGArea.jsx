@@ -176,11 +176,28 @@ const SVGArea = ({ draggedData }) => {
     // console.log(nodesChangesTracker);
   }
 
+  function handleAdd() {
+    const newNodes = [...nodesChangesTracker];
+    newNodes.push({
+      id: newNodes.length + 1,
+      name: "SOME TEST TEXT TO TEXT THE HOW TEXT LOOKS LIKE IN THIS MAP",
+      color: "#F45590",
+      x: 550,
+      y: 550,
+    });
+    setNodes(newNodes);
+    setNodesChangesTracker(newNodes);
+  }
+
   return (
     <>
       <div className="btn__container">
         <button className="save-btn" onClick={handleSave}>
           Save
+        </button>
+
+        <button className="save-btn" onClick={handleAdd}>
+          Add
         </button>
       </div>
       <div className="svgContainer" style={{ border: "1px solid dodgerblue" }}>
