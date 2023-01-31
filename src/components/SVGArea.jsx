@@ -72,7 +72,7 @@ const SVGArea = ({ draggedData }) => {
     // const g = svg.select("#contentWrap").append("g").attr("cursor", "grab");
     // const g = svg.append("g").attr("cursor", "grab");
     const contentWrap = svg.select("#contentWrap");
-    contentWrap.attr("pointer-events", "none");
+    // contentWrap.attr("pointer-events", "none");
     const g = svg.select("#shapes");
 
     g.selectAll(".node").call(
@@ -114,17 +114,19 @@ const SVGArea = ({ draggedData }) => {
       contentWrap.attr("transform", `translate(${x},${y}) scale(${k})`);
     }
 
+    svg.call(zoom);
+
     // It's below the map because our circles from earlier need to be on top!
-    svg
-      .append("rect")
-      .attr("class", "mouse-capture")
-      .attr("x", -5000)
-      .attr("y", -5000)
-      .attr("width", 15000)
-      .attr("height", 15000)
-      .style("fill", "white")
-      .lower() // put it below the map
-      .call(zoom);
+    // svg
+    //   .append("rect")
+    //   .attr("class", "mouse-capture")
+    //   .attr("x", -5000)
+    //   .attr("y", -5000)
+    //   .attr("width", 15000)
+    //   .attr("height", 15000)
+    //   .style("fill", "white")
+    //   .lower() // put it below the map
+    //   .call(zoom);
   }, [dragged]);
 
   useEffect(() => {
@@ -149,7 +151,6 @@ const SVGArea = ({ draggedData }) => {
     setNodesChangesTracker(nodes);
   }, []);
 
-  // eslint-disable-next-line no-unused-vars
   function handleOnMouseOver(e, isBuilding) {
     e.stopPropagation();
 
